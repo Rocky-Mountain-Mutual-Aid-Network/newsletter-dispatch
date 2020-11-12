@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Metapod Dispatch</title>
+    <meta name="description" content="What's better?">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+
+    <style>
+        .dispatch h1 {
+            margin-top: 0;
+        }
+        .dispatch .meta {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Metapod Dispatches</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas molestiae blanditiis optio corrupti repellat similique delectus numquam minima, debitis illum. Eveniet, magnam suscipit dolorum explicabo maxime deserunt commodi? Dolores.</p>
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdmcisiZPTX1anBrX4U_QyvLBb6fbT-7nf9wU0i0x2wI4x9fw/viewform">Add a dispatch via this form</a></p>
+    <hr>
+    <div id="main">
+        <div class="dispatches">
+            <div class="dispatch" v-for="dispatch in dispatches">
+                <p class="meta"><small>{{ dispatch.time }} &mdash; <strong>{{ dispatch.name }}</strong></small></p>
+                <h1>
+                    {{ dispatch.title }}
+                </h1>
+                <p>
+                    {{ dispatch.description }}
+                </p>
+                <p>
+                    <a :href="dispatch.link">{{ dispatch.linkText }}</a>
+                </p>
+            </div>
+        </div class="dispatches">
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+
+</body>
+
+</html>
