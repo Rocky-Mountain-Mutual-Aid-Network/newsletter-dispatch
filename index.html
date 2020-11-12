@@ -16,10 +16,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 
     <style>
-        .dispatch h1 {
+        [v-cloak] { display: none; }
+
+        .dispatch {
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 1em;
+            margin-bottom: 1em;
+        }
+        .dispatch .dispatch__title {
             margin-top: 0;
         }
-        .dispatch .meta {
+        .dispatch .dispatch__meta {
             margin-bottom: 0;
         }
     </style>
@@ -27,24 +34,24 @@
 
 <body>
     <h1>Metapod Dispatches</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas molestiae blanditiis optio corrupti repellat similique delectus numquam minima, debitis illum. Eveniet, magnam suscipit dolorum explicabo maxime deserunt commodi? Dolores.</p>
+    <p>Welcome to the Metapod Dispatches feed. This page lists timely updates from members of the Social Permaculture Metapod project. This is a space to share updates and requests.</p>
     <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdmcisiZPTX1anBrX4U_QyvLBb6fbT-7nf9wU0i0x2wI4x9fw/viewform">Add a dispatch via this form</a></p>
     <hr>
     <div id="main">
-        <div class="dispatches">
-            <div class="dispatch" v-for="dispatch in dispatches">
-                <p class="meta"><small>{{ dispatch.time }} &mdash; <strong>{{ dispatch.name }}</strong></small></p>
-                <h1>
+        <article class="dispatches" v-cloak>
+            <div class="dispatch" v-for="dispatch in dispatches.reverse()">
+                <p class="dispatch__meta"><small>{{ dispatch.time }} &mdash; <strong>{{ dispatch.name }}</strong></small></p>
+                <h2 class="dispatch__title">
                     {{ dispatch.title }}
-                </h1>
-                <p>
+                </h2>
+                <p class="dispatch__desc">
                     {{ dispatch.description }}
                 </p>
-                <p>
+                <p class="dispatch__link">
                     <a :href="dispatch.link">{{ dispatch.linkText }}</a>
                 </p>
             </div>
-        </div class="dispatches">
+        </article>
     </div>
 
     <script type="text/javascript" src="script.js"></script>

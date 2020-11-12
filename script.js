@@ -191,7 +191,7 @@ var app = new Vue({
                     time: self.gsxGetCol(r, 'timestamp'),
                     link: self.gsxGetCol(r, 'link'),
                     linkText: self.gsxGetCol(r, 'linktext'),
-                    name: self.gsxGetCol(r, 'yourname'),
+                    name: self.gsxGetCol(r, 'name'),
                     title: self.gsxGetCol(r, 'title'),
                     description: self.gsxGetCol(r, 'description'),
                 }
