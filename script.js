@@ -19,6 +19,23 @@ var app = new Vue({
         filter: [],
         spreadsheet: {},
         cacheLifeTime: 5000, //hours*60*60*1000
+        formVisible: false,
+        form: {
+            view: "https://docs.google.com/forms/d/e/1FAIpQLSdmcisiZPTX1anBrX4U_QyvLBb6fbT-7nf9wU0i0x2wI4x9fw/viewform",
+            action: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdmcisiZPTX1anBrX4U_QyvLBb6fbT-7nf9wU0i0x2wI4x9fw/formResponse",
+            name: 'entry.106782999',
+            title: 'entry.961334192',
+            desc: 'entry.450819509',
+            link: 'entry.2093079808',
+            url: 'entry.1066429746',
+            preview: {
+                name: '',
+                title: '',
+                desc: '',
+                link: '',
+                url: '',
+            }
+        }
     },
 
     /**

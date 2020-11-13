@@ -16,7 +16,42 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 
     <style>
+        * { box-sizing: border-box; }
         [v-cloak] { display: none; }
+
+        .form__row {
+            display: flex;
+        }
+
+        .form__row label {
+            flex-grow: 1;
+        }
+
+        .form__row label:not(:last-child) {
+            margin-right: .5em;
+        }
+
+        .form input {
+            width: 100%
+        }
+
+        .form textarea {
+            width: 100%;
+        }
+
+        .form input[type=submit] {
+            background-color: #3fdc68;
+            font-weight: bold;
+        }
+        .form input[type=submit]:hover {
+            background-color: #2db350;
+        }
+
+        #dispatchPreview .dispatch {
+            border-bottom: 0;
+            padding-bottom: 1em;
+            margin-bottom: 0;
+        }
 
         .dispatch {
             border-bottom: 1px dotted #ccc;
@@ -35,11 +70,57 @@
 <body>
     <h1>📰 Metapod Dispatches</h1>
     <p>Welcome to the Metapod Dispatches feed. This page lists timely updates from members of the Social Permaculture Metapod project. This is a space to share updates and requests.</p>
-    <p><strong><a href="https://docs.google.com/forms/d/e/1FAIpQLSdmcisiZPTX1anBrX4U_QyvLBb6fbT-7nf9wU0i0x2wI4x9fw/viewform">➕ Add a dispatch via this form</a></strong></p>
     <hr>
     <div id="main">
+        <p><strong><a href="#" v-on:click="formVisible = !formVisible">➕ Add a dispatch via this form</a></strong></p>
+        <form class="form" :action="form.action" method="post" target="_blank" v-if="formVisible">
+            <div class="form__row">
+                <label :for="form.name">
+                    Name / Group Name
+                    <input type="text" :name="form.name" v-model="form.preview.name">
+                </label>
+                <label :for="form.title">
+                    Title <small v-if="form.preview.title.length > 50">{{ form.preview.title.length }}/100</small>
+                    <input type="text" :name="form.title" v-model="form.preview.title" maxlength="100">
+                </label>
+            </div>
+            <div class="form__row">
+                <label :for="form.desc">
+                    description <small v-if="form.preview.desc.length > 50">{{ form.preview.desc.length }}/500</small>
+                    <textarea name="" id="" rows="6" :name="form.desc" v-model="form.preview.desc" maxlength="500"></textarea>
+                </label>
+            </div>
+            <div class="form__row">
+                <label :for="form.link">
+                    Link Text
+                    <input type="text" :name="form.link" v-model="form.preview.link">
+                </label>
+                <label :for="form.url">
+                    Link URL
+                    <input type="text" :name="form.url"v-model="form.preview.url">
+                </label>
+            </div>
+            <input type="submit" value="Send Dispatch">
+            <small>Clicking <strong>Send Dispatch</strong> will open a new tab and send you along to a Google Form where you can update your submission as necessary.</small>
+            <fieldset id="dispatchPreview">
+                <legend><small>PREVIEW</small></legend>
+                <div class="dispatch">
+                    <p class="dispatch__meta"><small>{{ new Date().toLocaleString().slice(0, -3) }} &mdash; <strong>{{ form.preview.name }}</strong></small></p>
+                    <h2 class="dispatch__title">
+                        {{ form.preview.title }}
+                    </h2>
+                    <p class="dispatch__desc">
+                        {{ form.preview.desc }}
+                    </p>
+                    <p class="dispatch__link">
+                        <a :href="form.preview.url">{{ form.preview.link }}</a>
+                    </p>
+                </div>
+            </fieldset>
+        </form>
+        <hr>
         <article class="dispatches" v-cloak>
-            <div class="dispatch" v-for="dispatch in dispatches.reverse()">
+            <div class="dispatch" v-for="dispatch in dispatches.slice().reverse()">
                 <p class="dispatch__meta"><small>{{ dispatch.time }} &mdash; <strong>{{ dispatch.name }}</strong></small></p>
                 <h2 class="dispatch__title">
                     {{ dispatch.title }}
