@@ -5,6 +5,7 @@ var app = new Vue({
     data: {
         // workbook information about the target spreadsheet
         workbook: {
+            url: 'https://docs.google.com/spreadsheets/d/1QuEmayHBfAKDy6Ajs6rtIH-XncdYhBQvS2bbi4I8TX4/edit',
             // spreadsheet ID (https://docs.google.com/spreadsheets/d/1QuEjanHBfAKDy6Ajs6rtIH-XncdYhBQvS2bbi4I8TX4/edit)
             //                                                this >> 1QuEjanHBfAKDy6Ajs6rtIH-XncdYhBQvS2bbi4I8TX4
             id: "1QuEmayHBfAKDy6Ajs6rtIH-XncdYhBQvS2bbi4I8TX4",
@@ -16,6 +17,7 @@ var app = new Vue({
                 dispatch: 'od6' // default 1st sheet
             }
         },
+        github: 'https://github.com/Rocky-Mountain-Mutual-Aid-Network/newsletter-dispatch',
         search: '',
         filter: [],
         spreadsheet: {},
