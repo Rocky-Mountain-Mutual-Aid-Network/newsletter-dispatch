@@ -5,8 +5,9 @@ var app = new Vue({
     data: {
         // workbook information about the target spreadsheet
         workbook: {
-            // spreadsheet ID https://docs.google.com/spreadsheets/d/e/2PACX-1vRWTFKI8v_tce5dKqrt8wk7LjYSxXcv7k-5rhTeSGXKwXanmOHWDsWI2g5auCs66HbZX0cgl0_kN0rf/pubhtml
-            id: "1eeZWTzyBYfOJaec2d4sNisrZZbDNB4Re9Ca-VU68oUg",
+            // spreadsheet ID (https://docs.google.com/spreadsheets/d/1QuEjanHBfAKDy6Ajs6rtIH-XncdYhBQvS2bbi4I8TX4/edit)
+            //                                                this >> 1QuEjanHBfAKDy6Ajs6rtIH-XncdYhBQvS2bbi4I8TX4
+            id: "1QuEmayHBfAKDy6Ajs6rtIH-XncdYhBQvS2bbi4I8TX4",
             // The SheetID for the workbook's sheets
             // See http://damolab.blogspot.com/2011/03/od6-and-finding-other-worksheet-ids.html
             // This can be a string OR the numbered position of the tab on the
@@ -20,9 +21,12 @@ var app = new Vue({
         spreadsheet: {},
         cacheLifeTime: 5000, //hours*60*60*1000
         formVisible: false,
+        // The following is used to create the form that submits data to the Google Form
+        // The items with 'entry.123456' represent the input name attribute for the corresponding questions on the Google Form
+        // The HTML form POSTs to the action URL
         form: {
-            view: "https://docs.google.com/forms/d/e/1FAIpQLSdmcisiZPTX1anBrX4U_QyvLBb6fbT-7nf9wU0i0x2wI4x9fw/viewform",
-            action: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdmcisiZPTX1anBrX4U_QyvLBb6fbT-7nf9wU0i0x2wI4x9fw/formResponse",
+            view: "https://docs.google.com/forms/d/e/1FAIpQLSehY69f_ys2Mg2mwEthgRpEHgFHE7q2SYSIFZPg00YrdPjnew/viewform",
+            action: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSehY69f_ys2Mg2mwEthgRpEHgFHE7q2SYSIFZPg00YrdPjnew/formResponse",
             name: 'entry.106782999',
             title: 'entry.961334192',
             desc: 'entry.450819509',

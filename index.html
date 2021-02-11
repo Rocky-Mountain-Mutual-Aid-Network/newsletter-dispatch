@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <title>Metapod Dispatch</title>
+    <title>RMMAN Dispatch</title>
     <meta name="description" content="What's better?">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -53,6 +53,11 @@
             margin-bottom: 0;
         }
 
+        .reverseorder {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
         .dispatch {
             border-bottom: 1px dotted #ccc;
             padding-bottom: 1em;
@@ -68,8 +73,8 @@
 </head>
 
 <body>
-    <h1>📰 Metapod Dispatches</h1>
-    <p>Welcome to the Metapod Dispatches feed. This page lists timely updates from members of the Social Permaculture Metapod project. This is a space to share updates and requests.</p>
+    <h1>📰 RMMAN Dispatches</h1>
+    <p>Welcome to the RMMAN Dispatches feed. This page lists timely updates from organizers of the Rocky Mountain Mutual Aid Network. This is a space to share updates and requests.</p>
     <hr>
     <div id="main">
         <p><strong><a href="#" v-on:click="formVisible = !formVisible">➕ Add a dispatch via this form</a></strong></p>
@@ -105,7 +110,7 @@
             <fieldset id="dispatchPreview">
                 <legend><small>PREVIEW</small></legend>
                 <div class="dispatch">
-                    <p class="dispatch__meta"><small>{{ new Date().toLocaleString().slice(0, -3) }} &mdash; <strong>{{ form.preview.name }}</strong></small></p>
+                    <p class="dispatch__meta"><small>{{ new Date().toLocaleString().toString().slice(0, -3) }} &mdash; <strong>{{ form.preview.name }}</strong></small></p>
                     <h2 class="dispatch__title">
                         {{ form.preview.title }}
                     </h2>
@@ -119,8 +124,8 @@
             </fieldset>
         </form>
         <hr>
-        <article class="dispatches" v-cloak>
-            <div class="dispatch" v-for="dispatch in dispatches.slice().reverse()">
+        <article class="dispatches reverseorder" v-cloak>
+            <div class="dispatch" v-for="dispatch in dispatches">
                 <p class="dispatch__meta"><small>{{ dispatch.time }} &mdash; <strong>{{ dispatch.name }}</strong></small></p>
                 <h2 class="dispatch__title">
                     {{ dispatch.title }}
