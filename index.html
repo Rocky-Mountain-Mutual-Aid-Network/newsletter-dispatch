@@ -19,6 +19,15 @@
         * { box-sizing: border-box; }
         [v-cloak] { display: none; }
 
+        .form-is-inline {
+            display: flex;
+            flex: 0 1 auto;
+        }
+
+        .form-is-inline input[type=email] {
+            flex: 1 1 55ch;
+        }
+
         .form__row {
             display: flex;
         }
@@ -39,11 +48,11 @@
             width: 100%;
         }
 
-        .form input[type=submit] {
+        input[type=submit] {
             background-color: #3fdc68;
             font-weight: bold;
         }
-        .form input[type=submit]:hover {
+        input[type=submit]:hover {
             background-color: #2db350;
         }
 
@@ -75,6 +84,20 @@
 <body>
     <h1>📰 RMMAN Dispatches</h1>
     <p>Welcome to the RMMAN Dispatches feed. This page lists timely updates from organizers of the Rocky Mountain Mutual Aid Network. This is a space to share updates and requests.</p>
+    <p>Get the insider newsletter delivered to your inbox!</p>
+    <fieldset>
+        <legend>Subscribe to the Insider Newsletter</legend>
+        <form action="https://buttondown.email/api/emails/embed-subscribe/rmman-insider" method="post" target="popupwindow"
+            onsubmit="window.open('https://buttondown.email/rmman-insider', 'popupwindow')" class="embeddable-buttondown-form">
+            <label for="bd-email">Enter your email</label>
+            <input type="hidden" value="1" name="embed" />
+            <div class="form-is-inline">
+                <input type="email" name="email" id="bd-email" />
+                <input type="submit" value="Subscribe" />
+            </div>
+            <input type="hidden" name="tag" value="news.rmman.org" />
+        </form>
+    </fieldset>
     <hr>
     <div id="main">
         <p><strong><a href="#" v-on:click="formVisible = !formVisible">➕ Add a dispatch via this form</a></strong></p>
