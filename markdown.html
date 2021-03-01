@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>RMMAN Dispatch Markdown</title>
+    <meta name="description" content="What's better?">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="main">
+<pre id="markdown">
+## Quick Links
+<template v-for="dispatch in dispatches.reverse()">
+- **[{{ dispatch.title }}]({{ dispatch.link }})** *via* {{ dispatch.name }}</template>
+<template v-for="dispatch in dispatches">
+----
+*{{ dispatch.name }} posted {{ dispatch.time.toLocaleDateString().replace('/2021','') }}*
+## {{ dispatch.title }}
+
+{{ dispatch.description }}
+
+[{{ dispatch.linkText }}]({{ dispatch.link }})
+</template>
+</pre>
+</div>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

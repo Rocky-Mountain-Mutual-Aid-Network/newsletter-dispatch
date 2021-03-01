@@ -211,7 +211,7 @@ var app = new Vue({
             return this.gsxRowObject(this.workbook.sheets.dispatch, function (r, self) {
 
                 return {
-                    time: self.gsxGetCol(r, 'timestamp'),
+                    time: new Date( self.gsxGetCol(r, 'timestamp') ),
                     link: self.gsxGetCol(r, 'link'),
                     linkText: self.gsxGetCol(r, 'linktext'),
                     name: self.gsxGetCol(r, 'name'),

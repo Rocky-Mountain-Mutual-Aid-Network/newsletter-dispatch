@@ -1,0 +1,62 @@
+* { box-sizing: border-box; }
+[v-cloak] { display: none; }
+
+.form-is-inline {
+    display: flex;
+    flex: 0 1 auto;
+}
+
+.form-is-inline input[type=email] {
+    flex: 1 1 55ch;
+}
+
+.form__row {
+    display: flex;
+}
+
+.form__row label {
+    flex-grow: 1;
+}
+
+.form__row label:not(:last-child) {
+    margin-right: .5em;
+}
+
+.form input {
+    width: 100%
+}
+
+.form textarea {
+    width: 100%;
+}
+
+input[type=submit] {
+    background-color: #3fdc68;
+    font-weight: bold;
+}
+input[type=submit]:hover {
+    background-color: #2db350;
+}
+
+#dispatchPreview .dispatch {
+    border-bottom: 0;
+    padding-bottom: 1em;
+    margin-bottom: 0;
+}
+
+.reverseorder {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.dispatch {
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+.dispatch .dispatch__title {
+    margin-top: 0;
+}
+.dispatch .dispatch__meta {
+    margin-bottom: 0;
+}
